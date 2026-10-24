@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const CONTACT = 'print.st.avtor@mail.ru';
+  const CONTACT = 'mastercip@mail.ru';
   const COLORS = { ink: '#253c33', muted: '#55675e', line: '#cdd6cc', cream: '#f5f6f0', soft: '#edf0e9', accent: '#d8e59a', white: '#ffffff' };
   const clean = value => value === null || value === undefined ? '' : String(value).trim();
   const escape = value => clean(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -41,9 +41,15 @@
     return [field(label, consentLabel(item)), field('Версия документа', item.version), field('Ссылка на документ', item.url, true)];
   }
 
-  function projectRows(project) {
-    if (!project) return [field('Выбранный проект', 'Не выбран — подбор по параметрам')];
-    return [field('Номер проекта', project.id), field('Название проекта', project.name), field('Площадь проекта', project.area), field('Этажность проекта', project.floors), field('Выбранная комплектация', project.package)];
+  function packageLabel(value) {
+    const key = clean(value);
+    return key === 'econom' ? 'Эконом' : key === 'premium' ? 'Премиум' : key || 'Не выбрана';
+  }
+
+  function projectFields(project) {
+    const area = clean(project.area);
+    const areaLabel = area && /^\d+(?:[.,]\d+)?$/.test(area) ? area.replace('.', ',') + ' м²' : area;
+    return [['Номер проекта', project.id], ['Название проекта', project.originalName || project.name], ['Площадь проекта', areaLabel], ['Этажность проекта', project.floors], ['Выбранная комплектация', packageLabel(project.package)], ['Ссылка на проект', project.url, true]];
   }
 
   function textField(label, value) { return `${label}: ${valueOrDash(value)}`; }
@@ -51,19 +57,21 @@
   function build(data, audience) {
     const source = data && typeof data === 'object' ? data : {};
     const client = source.client || {};
-    const answers = source.answers || {};
     const consents = source.consents || {};
     const isAdmin = audience !== 'client';
-    const isContact = source.kind === 'contact';
+    const project = source.kind === 'callback' && source.project && clean(source.project.id) ? source.project : null;
+    const projectId = project ? clean(project.id) : '';
+    const selectedPackage = project ? packageLabel(project.package) : '';
+    const projectData = project ? projectFields(project) : [];
     const id = clean(source.id);
-    const subject = isAdmin ? `МастерСип · Новая заявка${id ? ' № ' + id : ''}` : `МастерСип · Ваша заявка${id ? ' № ' + id : ''} получена`;
-    const title = isAdmin ? (isContact ? 'Новое обращение' : 'Новая заявка на строительство') : 'Ваша заявка получена';
-    const intro = isAdmin ? (isContact ? 'Тема обращения и контакты заявителя — всё для первого разговора.' : 'Параметры дома и контакты заявителя — всё для первого разговора и подготовки сметы.') : `${clean(client.name) ? clean(client.name) + ', спасибо' : 'Спасибо'} за обращение в МастерСип. Мы свяжемся с вами в ближайшее время, чтобы обсудить ${isContact ? 'ваш вопрос' : 'ваш будущий дом'}.`;
-    const preheader = isAdmin ? (isContact ? 'Тема обращения, контакты и сведения о согласиях.' : 'Контакты, параметры дома, выбранный проект и сведения о согласиях.') : 'Мы получили вашу заявку и свяжемся с вами в ближайшее время.';
+    const subject = project ? (isAdmin ? `МастерСип · Расчёт проекта ${projectId} · ${selectedPackage}${id ? ' · Заявка № ' + id : ''}` : `МастерСип · Ваш запрос по проекту ${projectId} · ${selectedPackage} получен`) : (isAdmin ? `МастерСип · Новое обращение${id ? ' № ' + id : ''}` : `МастерСип · Ваше обращение${id ? ' № ' + id : ''} получено`);
+    const title = project ? (isAdmin ? `Запрос стоимости проекта ${projectId}` : `Ваш запрос по проекту ${projectId} получен`) : (isAdmin ? 'Новое обращение' : 'Ваше обращение получено');
+    const intro = isAdmin ? (project ? `Клиент просит рассчитать стоимость проекта ${projectId} в комплектации «${selectedPackage}». Данные проекта и контакты указаны ниже.` : 'Тема обращения и контакты заявителя — всё для первого разговора.') : `${clean(client.name) ? clean(client.name) + ', спасибо' : 'Спасибо'} за обращение в МастерСип. Мы свяжемся с вами в ближайшее время, чтобы обсудить ${project ? `проект ${projectId} в комплектации «${selectedPackage}»` : 'ваш вопрос'}.`;
+    const preheader = project ? `Проект ${projectId} · ${selectedPackage}. Запрос расчёта стоимости и контакты заявителя.` : (isAdmin ? 'Тема обращения, контакты и сведения о согласиях.' : 'Мы получили ваше обращение и свяжемся с вами в ближайшее время.');
     const groups = [
       group('Заявка', [field('Номер заявки', source.id), field('Дата и время', source.createdAt), ...(source.topic ? [field('Тема обращения', source.topic)] : [])]),
-      group(isAdmin ? 'Контакты заявителя' : 'Ваши контакты', [field('Имя', client.name), field('Телефон', client.phone), field('Электронная почта', client.email)]),
-      ...(!isContact ? [group('Параметры дома', [field('Этажность', answers.floors), field('Примерная площадь', answers.area), field('Участок', answers.plot)]), group('Проект и комплектация', projectRows(source.project))] : [])
+      ...(project ? [group('Проект и комплектация', projectData.map(([label, value, isURL]) => field(label, value, isURL)))] : []),
+      group(isAdmin ? 'Контакты заявителя' : 'Ваши контакты', [field('Имя', client.name), field('Телефон', client.phone), field('Электронная почта', client.email)])
     ];
     if (isAdmin) {
       groups.push(group('Согласия', [
@@ -74,7 +82,7 @@
       groups.push(group('Источник обращения', [field('Страница формы', source.origin, true)]));
     }
 
-    const footer = isAdmin ? (isContact ? 'Письмо содержит сведения из обращения. Свяжитесь с заявителем, чтобы обсудить его вопрос.' : 'Письмо содержит сведения из заявки. Свяжитесь с заявителем, чтобы уточнить задачу и подготовить смету.') : `Если хотите дополнить заявку, напишите нам: <a href="mailto:${CONTACT}" style="color:${COLORS.ink};text-decoration:underline;overflow-wrap:anywhere;">${CONTACT}</a>.`;
+    const footer = isAdmin ? (project ? 'Свяжитесь с заявителем, чтобы обсудить выбранный проект и подготовить расчёт стоимости.' : 'Письмо содержит сведения из обращения. Свяжитесь с заявителем, чтобы обсудить его вопрос.') : `Если хотите дополнить обращение, напишите нам: <a href="mailto:${CONTACT}" style="color:${COLORS.ink};text-decoration:underline;overflow-wrap:anywhere;">${CONTACT}</a>.`;
     const html = `<!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>${escape(subject)}</title></head>
 <body style="margin:0;padding:0;background:${COLORS.cream};color:${COLORS.ink};-webkit-text-size-adjust:100%;">
@@ -91,10 +99,10 @@ ${groups.join('\n')}
     const text = [
       'МастерСип · Строительство СИП-домов', '', title, intro, '',
       textField('Номер заявки', source.id), textField('Дата и время', source.createdAt), ...(source.topic ? [textField('Тема обращения', source.topic)] : []), '',
+      ...(project ? ['ПРОЕКТ И КОМПЛЕКТАЦИЯ', ...projectData.map(([label, value]) => textField(label, value)), ''] : []),
       'КОНТАКТЫ', textField('Имя', client.name), textField('Телефон', client.phone), textField('Электронная почта', client.email), '',
-      ...(!isContact ? ['ПАРАМЕТРЫ ДОМА', textField('Этажность', answers.floors), textField('Примерная площадь', answers.area), textField('Участок', answers.plot), '', 'ПРОЕКТ И КОМПЛЕКТАЦИЯ', ...(source.project ? [textField('Номер проекта', source.project.id), textField('Название проекта', source.project.name), textField('Площадь проекта', source.project.area), textField('Этажность проекта', source.project.floors), textField('Выбранная комплектация', source.project.package)] : ['Выбранный проект: Не выбран — подбор по параметрам'])] : []),
       ...(isAdmin ? ['', 'СОГЛАСИЯ', textField('Политика конфиденциальности', consentLabel(consents.privacy)), textField('Версия документа', consents.privacy && consents.privacy.version), textField('Ссылка на документ', consents.privacy && consents.privacy.url), textField('Согласие на обработку персональных данных', consentLabel(consents.personal)), textField('Версия документа', consents.personal && consents.personal.version), textField('Ссылка на документ', consents.personal && consents.personal.url), textField('Время фиксации заявки и сведений о согласиях', source.createdAt), '', textField('Страница формы', source.origin)] : []),
-      '', isAdmin ? (isContact ? 'Свяжитесь с заявителем, чтобы обсудить его вопрос.' : 'Свяжитесь с заявителем, чтобы уточнить задачу и подготовить смету.') : `Если хотите дополнить заявку, напишите нам: ${CONTACT}.`, '', `МастерСип · ${CONTACT}`
+      '', isAdmin ? (project ? 'Свяжитесь с заявителем, чтобы обсудить выбранный проект и подготовить расчёт стоимости.' : 'Свяжитесь с заявителем, чтобы обсудить его вопрос.') : `Если хотите дополнить обращение, напишите нам: ${CONTACT}.`, '', `МастерСип · ${CONTACT}`
     ].join('\n');
     return { subject: subject.replace(/[\r\n]/g, ' '), html, text };
   }

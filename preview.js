@@ -6,7 +6,7 @@
  const applyDevice=(u,d)=>{if(d==='desktop')u.searchParams.delete('device');else u.searchParams.set('device',d);return u};
  if(params.get('preview')==='1'||(window.matchMedia('(max-width:600px)').matches&&!params.has('device'))){
   document.body.classList.add('preview-content');window.conceptApp=startConceptApp();
-  if(['#faq','#foundation'].includes(location.hash))requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView());
+  if(['#faq','#foundation','#sip-comfort','#sip-benefits'].includes(location.hash))requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView());
   const state=()=>parent.postMessage({channel,type:'state',path:location.pathname,hash:location.hash,label:pageTitle(pageKey)},location.origin);
   window.addEventListener('hashchange',state);
   window.addEventListener('message',e=>{if(e.source!==parent||e.origin!==location.origin||e.data?.channel!==channel)return;if(e.data.type==='device'){device=valid(e.data.device);history.replaceState(null,'',applyDevice(new URL(location),device))}});

@@ -1,4 +1,4 @@
-/* Separate document dialog preserves the underlying quiz, input values and checkbox state. */
+/* Separate document dialog preserves the underlying form, input values and checkbox state. */
 window.addEventListener('DOMContentLoaded',()=>{
  if(document.body.classList.contains('preview-shell'))return;
  const modal=document.createElement('dialog');modal.id='document-dialog';modal.className='document-modal';modal.setAttribute('aria-labelledby','document-title');modal.innerHTML='<button type="button" class="document-close" aria-label="Закрыть документ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button><div class="document-content"></div>';document.body.append(modal);let focusBefore;
