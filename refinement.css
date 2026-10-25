@@ -43,7 +43,8 @@
 @media(prefers-reduced-motion:reduce){.contact-launcher::before{animation:none;opacity:0}}
 @media(min-width:768px) and (max-height:520px){.v2 .hero,.v2 .hero-photo,.v2 .hero-photo img{min-height:300px}.v2 .hero-copy{padding:20px 24px}.v2 .hero h1{font-size:32px;line-height:1.08;margin-bottom:14px}.v2 .hero p.hero-lead-full{font-size:13px;line-height:1.5;margin-bottom:14px}.v2 .hero .button-row{flex-direction:row;gap:4px 14px}.v2 .hero .btn{min-height:40px;padding:10px 12px;font-size:12px}.v2 .hero .outline{padding-inline:0}}
 .legal-page h1,.document-title,.document-reading>h2:first-child{overflow-wrap:break-word;text-wrap:balance}
-.contact-panel .channel-icon.telegram,.contact-panel .channel-icon.max{background:transparent}.contact-panel .channel-icon.mail{background:#ff9e00}
+.contact-panel{max-height:calc(100dvh - 112px);overflow-y:auto;overscroll-behavior:contain}
+.contact-panel .channel-icon.telegram,.contact-panel .channel-icon.max,.contact-panel .channel-icon.whatsapp{background:transparent}.contact-panel .channel-icon.mail{background:#ff9e00}
 
 /* QA: remove inherited stagger and size each new card control independently. */
 .site .project-card:nth-child(even){padding-top:0}
