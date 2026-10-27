@@ -1,0 +1,39 @@
+{
+  "purpose": "Generic platform brand marks from the user-requested Master SIP widget reference; no Master SIP company contacts copied.",
+  "type": "existing platform trademarks/brand assets",
+  "files": [
+    {
+      "file": "max.svg",
+      "source_url": "https://mastersipms.ru/wp-content/uploads/mastersip/brand/max.svg",
+      "retrieved_on": "2026-10-26",
+      "http_status": 200,
+      "content_type": "image/svg+xml",
+      "bytes": 72862,
+      "sha256": "5caa61a4b0731d0d89421b4fb24f41433025e5aea59155a14cf3a3fada6c9174",
+      "safety_check": "XML parsed; no scripts, event handlers, external refs, foreignObject, images or animation",
+      "transformation": "none"
+    },
+    {
+      "file": "telegram.svg",
+      "source_url": "https://mastersipms.ru/wp-content/uploads/mastersip/brand/telegram.svg",
+      "retrieved_on": "2026-10-26",
+      "http_status": 200,
+      "content_type": "image/svg+xml",
+      "bytes": 2051,
+      "sha256": "54842d414c100f0110f90caf09ff58cd0d229629820e4576bd70befca88befd5",
+      "safety_check": "XML parsed; no scripts, event handlers, external refs, foreignObject, images or animation",
+      "transformation": "none"
+    },
+    {
+      "file": "whatsapp.svg",
+      "source_url": "https://mastersipms.ru/wp-content/uploads/mastersip/brand/whatsapp.svg",
+      "retrieved_on": "2026-10-26",
+      "http_status": 200,
+      "content_type": "image/svg+xml",
+      "bytes": 1148,
+      "sha256": "bd52021540e562c4c568b78dd5f8971317e724759f072ec1fb99bba286beab24",
+      "safety_check": "XML parsed; no scripts, event handlers, external refs, foreignObject, images or animation",
+      "transformation": "none"
+    }
+  ]
+}

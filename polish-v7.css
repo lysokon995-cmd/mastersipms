@@ -1,0 +1,54 @@
+/* Shared component geometry is explicit across restored visual systems. */
+/* Native select arrows can sit against the OS-drawn edge. Draw the chevron
+   inside the field with an explicit inset, retaining the native select menu. */
+:root{--select-chevron:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23235e99' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")}
+[data-concept="2"]{--select-chevron:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23242622' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")}
+[data-concept="3"]{--select-chevron:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23244e43' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")}
+select,.price-selectors select,.catalog-filters select{
+ appearance:none;-webkit-appearance:none;-moz-appearance:none;
+ background-image:var(--select-chevron);background-repeat:no-repeat;
+ background-position:right 18px center;background-size:16px 16px;
+ padding-inline:16px 50px;line-height:1.5;
+}
+.index-item{display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:18px;row-gap:10px;padding:26px 0;min-height:172px;align-content:start}
+.index-item .direction-icon{position:static;grid-column:1;grid-row:1;align-self:start;margin-top:4px}
+.index-item h3{grid-column:2;grid-row:1;padding:0;margin:0;font-size:29px;line-height:1.25}
+.index-item p{grid-column:2;grid-row:2;margin:0;line-height:1.7}
+.index-item .direction-count{position:static;grid-column:2;grid-row:3;margin:0;line-height:1.5}
+.direction-icon svg{display:block;width:28px;height:28px;flex-shrink:0}
+.factor{display:flex;align-items:center;gap:14px}.factor svg{display:block;flex:0 0 24px;width:24px;height:24px}
+.preparation-static{padding:24px 28px;margin-top:30px;background:var(--surface);border-radius:var(--radius)}
+.preparation-heading{display:flex;gap:14px;align-items:center;color:var(--ink);font-weight:650;font-size:14px;line-height:1.6}
+.preparation-heading svg{width:24px;height:24px;flex:0 0 24px}
+.preparation-static>p{margin:12px 0 0 38px;padding:0;max-width:85ch;font-size:13px;line-height:1.8}
+.contact-widget{right:clamp(20px,2.4vw,44px);bottom:clamp(64px,10vh,104px);display:flex;flex-direction:row;align-items:center;gap:12px;isolation:isolate}
+#contact-toggle{position:relative;order:1;width:56px;min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;gap:12px;padding:0;border-radius:var(--radius)!important;border:1px solid #ffffff55;box-shadow:0 7px 24px #142b2526;transition:background-color .18s ease-out,transform .18s ease-out}
+#contact-toggle>svg{width:25px;height:25px;flex:0 0 25px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.contact-toggle-label{font-size:12px;font-weight:600;line-height:1;color:inherit}
+#contact-toggle:before,#contact-toggle:after{content:"";position:absolute;inset:-1px;border:1px solid var(--action);border-radius:inherit;z-index:-1;pointer-events:none;animation:contact-ripple 5s ease-out infinite}
+#contact-toggle:after{animation-delay:.65s}
+.is-open #contact-toggle:before,.is-open #contact-toggle:after{animation:none;opacity:0}
+.is-open .contact-toggle-label{display:none}.is-open #contact-toggle{width:56px;padding:0}
+#contact-toggle:hover{transform:translateY(-2px)}
+#back-top{order:0;display:grid;place-items:center;width:46px;height:46px;margin-right:0;border:1px solid var(--action);border-radius:var(--radius);background:var(--paper);color:var(--action);box-shadow:0 4px 16px #142b2514;transition:background-color .18s ease-out,transform .18s ease-out}
+#back-top:hover{background:var(--surface);transform:translateY(-2px)}
+#back-top svg{display:block;width:22px;height:22px;fill:none;stroke:currentColor}
+.contact-panel{bottom:calc(100% + 16px);right:0;width:310px;max-height:calc(100dvh - 280px);padding:22px;border-radius:20px!important;border:1px solid var(--line);box-shadow:0 14px 40px #142b2524}
+.contact-panel-heading h2,[data-concept] .contact-panel-heading h2{font-size:18px;line-height:1.4;margin:0 0 7px}
+.contact-panel-heading p{font-size:12px;line-height:1.6}
+.contact-channel{min-height:58px;padding:8px 10px;border-radius:12px;gap:13px;transition:background-color .16s ease-out}
+.contact-channel:hover{background:var(--surface)}
+.contact-channel img,.contact-channel-symbol{width:34px;height:34px;flex:0 0 34px}
+.contact-hours{padding-inline:10px;line-height:1.6}
+@keyframes contact-ripple{0%{transform:scale(1);opacity:.4}30%,100%{transform:scale(1.28);opacity:0}}
+@media(max-width:760px){
+ .index-item{padding:22px 0;min-height:155px;column-gap:15px}
+ .index-item h3{font-size:25px}.index-item .direction-icon{margin-top:2px}
+ .preparation-static{padding:22px 20px}.preparation-static>p{margin-left:0;font-size:14px}
+ .contact-widget{right:18px;bottom:max(64px,calc(env(safe-area-inset-bottom) + 44px));gap:10px}
+ #contact-toggle{width:54px;min-width:54px;height:54px;padding:0}
+ .contact-toggle-label{display:none}
+ #back-top{width:44px;height:44px;margin-right:0}
+ .contact-panel{width:290px;max-width:calc(100vw - 36px);max-height:calc(100dvh - 240px);padding:18px;border-radius:18px!important}
+}
+@media(prefers-reduced-motion:reduce){#contact-toggle:before,#contact-toggle:after{animation:none;opacity:0}#contact-toggle,#back-top,.contact-channel{transition:none}}

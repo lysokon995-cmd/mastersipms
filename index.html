@@ -1,1 +1,36 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="prototype-base" content="./"><meta name="description" content="МастерСип — проекты и строительство домов из СИП-панелей в Москве и Московской области."><title>Тёплые дома из СИП-панелей · МастерСип</title><link rel="stylesheet" href="./style.css?rev=20261024-project-contact"><link rel="stylesheet" href="./refinement.css?rev=20261024-project-contact"></head><body data-page="home"><main id="stage"></main><dialog id="dialog"><button type="button" class="dialog-close" aria-label="Закрыть окно">×</button><div id="dialog-content"></div></dialog><button type="button" class="scroll-top" id="scroll-top" hidden aria-label="Прокрутить наверх"><span class="action-icon" data-direction="up" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M6 4h12M12 20V8m-5 5 5-5 5 5"/></svg></span> Наверх</button><noscript>Для работы сайта включите JavaScript.</noscript><script src="./projects.js?rev=20261024-project-contact"></script><script src="./pages.js?rev=20261024-project-contact"></script><script src="./legal.js?rev=20261024-project-contact"></script><script src="./cookies.js?rev=20261024-project-contact"></script><script src="./mail-templates.js?rev=20261024-project-contact"></script><script src="./app.js?rev=20261024-project-contact"></script><script src="./chat.js?rev=20261024-project-contact"></script><script src="./documents.js?rev=20261024-project-contact"></script><script src="./preview.js?rev=20261024-project-contact"></script></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Областная санитарная служба · четыре концепции</title>
+  <link rel="stylesheet" href="viewer-v7.css">
+</head>
+<body>
+  <header class="review-header">
+    <nav class="variant-controls" aria-label="Выбор концепции">
+      <button data-variant="1" aria-pressed="true"><b>01</b> Выездная служба</button>
+      <button data-variant="2" aria-pressed="false"><b>02</b> Забота о доме</button>
+      <button data-variant="3" aria-pressed="false"><b>03</b> Точный подход</button>
+      <button data-variant="4" aria-pressed="false"><b>04</b> Ясный сервис</button>
+    </nav>
+    <div class="device-controls" role="group" aria-label="Устройство">
+      <button data-device="desktop" aria-pressed="true">Компьютер</button>
+      <button data-device="tablet" aria-pressed="false">Планшет</button>
+      <button data-device="phone" aria-pressed="false">Телефон</button>
+    </div>
+    <button id="choose">Выбрать вариант</button>
+  </header>
+  <main class="preview-stage" id="stage"><div class="device-frame" id="frame"><iframe src="concept-1.html?revision=7.2" id="preview" title="Главная страница · концепция 01"></iframe></div></main>
+  <dialog id="selection-dialog" aria-labelledby="selection-title">
+    <button class="dialog-close" data-selection-close aria-label="Закрыть выбор">×</button>
+    <h2 id="selection-title"></h2>
+    <p>Ссылка сохраняет выбранные концепцию и устройство.</p>
+    <label for="share-url">Ссылка для просмотра</label><input id="share-url" readonly>
+    <div class="selection-actions"><button id="save-choice">Сохранить выбор</button><button id="copy-link">Скопировать ссылку</button></div>
+    <p id="selection-status" role="status"></p>
+  </dialog>
+  <script src="viewer-v7.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+[
+  {
+    "variant": 1,
+    "name": "Выездная служба",
+    "version": 5,
+    "original": 2
+  },
+  {
+    "variant": 2,
+    "name": "Забота о доме",
+    "version": 4,
+    "original": 3
+  },
+  {
+    "variant": 3,
+    "name": "Точный подход",
+    "version": 4,
+    "original": 2
+  },
+  {
+    "variant": 4,
+    "name": "Ясный сервис",
+    "version": 4,
+    "original": 1
+  }
+]
