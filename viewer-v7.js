@@ -14,7 +14,7 @@ function fit(){
 function update(changePage){
   document.querySelectorAll('[data-variant]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.variant===variant)));
   document.querySelectorAll('[data-device]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.device===device)));
-  if(changePage){$('#preview').src=`concept-${variant}.html?revision=7.2`;$('#preview').title=`Главная страница · концепция 0${variant}`}
+  if(changePage){$('#preview').src=`concept-${variant}.html?revision=${variant==='4'?'8':'7.2'}`;$('#preview').title=`Главная страница · концепция 0${variant}`}
   const url=new URL(location);url.searchParams.set('variant',variant);url.searchParams.set('device',device);history.replaceState(null,'',url);fit();
 }
 document.querySelectorAll('[data-variant]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.variant!==variant){variant=b.dataset.variant;update(true)}}));

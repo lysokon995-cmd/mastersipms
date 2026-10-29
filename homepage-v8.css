@@ -1,0 +1,81 @@
+/* Concept 04: retain the blue/Manrope identity, shorten the path to prices. */
+[data-variant="4"] .site-header nav{gap:22px}
+[data-variant="4"] .hero-grid{min-height:370px;gap:58px;padding-block:26px}
+[data-variant="4"] .hero-photo{height:330px}
+[data-variant="4"] .hero h1{font-size:51px;line-height:1.12}
+[data-variant="4"] .hero-copy>p{font-size:14px;max-width:520px;margin-top:22px}
+[data-variant="4"] .hero-actions{margin-top:27px}
+.v8-services{padding-block:42px 32px}
+.v8-section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:24px}
+.v8-section-heading h2{font-size:32px;line-height:1.2}
+.v8-section-heading p{font-size:13px;margin-top:10px;line-height:1.7}
+.v8-section-heading>.text-action{flex-shrink:0;font-size:12px}
+.quick-tabs{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.quick-tabs button{background:transparent;border:1px solid transparent;border-radius:7px;min-height:44px;padding:10px 16px;font-size:12px;white-space:nowrap}
+.quick-tabs button:hover{background:var(--surface)}
+.quick-tabs [aria-selected="true"]{background:var(--selected);border-color:#c1d4f4;color:var(--action);font-weight:700}
+.quick-description{font-size:12px;margin-block:15px 12px}
+.quick-services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.quick-service{display:flex;flex-direction:column;justify-content:center;gap:5px;padding:14px 17px;min-height:76px;border:1px solid var(--line);border-radius:8px;background:var(--paper);transition:background-color .16s ease-out,border-color .16s ease-out}
+.quick-service:hover{background:var(--surface);border-color:#a7bee4}
+.quick-service>span{font-size:15px;line-height:1.4;font-weight:650}
+.quick-service small{font-size:10px;line-height:1.6;color:var(--muted)}
+.quick-more{font-size:11px;margin-top:7px;padding-block:9px;min-height:40px}
+[data-variant="4"] .prices-section{padding-block:48px}
+[data-variant="4"] .prices-section .section-heading{margin-bottom:28px}
+[data-variant="4"] .prices-section .section-heading h2{font-size:36px}
+.v8-reviews{display:flex;justify-content:space-between;align-items:center;gap:40px;padding-block:32px;border-bottom:1px solid var(--line);margin-bottom:68px}
+.v8-reviews h2{font-size:25px;line-height:1.3}
+.v8-reviews p{font-size:13px;line-height:1.7;margin-top:8px}
+.v8-outline-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border:1px solid var(--action);border-radius:var(--radius);font-size:12px;font-weight:600;color:var(--action);flex-shrink:0}
+.v8-outline-link:hover{background:var(--surface)}
+.v8-geography{padding-top:0}
+.v8-geography-surface{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;padding:42px;background:var(--surface);border-radius:var(--radius)}
+.v8-geography h2{font-size:34px;line-height:1.25;max-width:440px}
+.v8-geography-surface>div>p{font-size:14px;line-height:1.8;margin-top:18px;max-width:540px}
+.v8-region-labels{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:25px;font-size:12px;color:var(--ink)}
+.v8-address-request{display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+.v8-address-request label{font-size:14px;font-weight:650}
+.v8-address-request input{width:100%;min-height:54px;font-size:14px;padding:14px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink)}
+.v8-geography .v8-address-request>p{font-size:11px;line-height:1.7;margin-top:0}
+.v8-articles{padding-top:0}
+.v8-article-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
+.v8-article{border-top:1px solid var(--line);padding-top:22px;display:flex;flex-direction:column;align-items:flex-start}
+.v8-article .article-topic{font-size:11px;color:var(--action);margin-bottom:14px}
+.v8-article h3{font-size:21px;line-height:1.4;letter-spacing:-.025em;margin-bottom:14px}
+.v8-article h3 a:hover{text-decoration:underline;text-decoration-thickness:1px}
+.v8-article>p:not(.article-topic){font-size:13px;line-height:1.8;margin-bottom:20px}
+.v8-article>.text-action{margin-top:auto;font-size:12px}
+[data-variant="4"] .footer-upper nav{flex-wrap:wrap;gap:12px 20px}
+[data-variant="4"] .footer-lower{flex-wrap:wrap}
+[data-variant="4"] .footer-lower>a{font-size:10px;color:var(--muted);text-decoration:underline}
+@media(max-width:1100px){[data-variant="4"] .hero-grid{gap:32px}[data-variant="4"] .hero h1{font-size:43px}[data-variant="4"] .site-header nav{gap:16px}.quick-tabs button{padding-inline:12px}.v8-geography-surface{gap:40px;padding:32px}}
+@media(max-width:760px){
+ [data-variant="4"] .hero-grid{min-height:0;padding-block:20px 24px;gap:22px}
+ [data-variant="4"] .hero h1{font-size:34px;line-height:1.15}
+ [data-variant="4"] .hero-copy>p{font-size:13px;line-height:1.8;margin-top:16px}
+ [data-variant="4"] .hero-actions{margin-top:21px}
+ [data-variant="4"] .hero-photo{height:180px}
+ .v8-services{padding-block:30px 22px}
+ .v8-section-heading{display:block;margin-bottom:18px}
+ .v8-section-heading h2{font-size:27px}
+ .v8-section-heading p{font-size:13px;margin-top:10px}
+ .v8-section-heading>.text-action{margin-top:6px}
+ .quick-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;padding-bottom:12px}
+ .quick-tabs button{text-align:left;padding:10px 12px;min-height:44px;font-size:12px}
+ .quick-description{margin-block:13px 10px;font-size:12px}
+ .quick-services{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .quick-service{min-height:73px;padding:12px}
+ .quick-service>span{font-size:14px}
+ .quick-service small{font-size:10px}
+ [data-variant="4"] .prices-section{padding-block:32px}
+ [data-variant="4"] .prices-section .section-heading h2{font-size:29px}
+ .v8-reviews{display:block;padding-block:28px;margin-bottom:40px}
+ .v8-reviews h2{font-size:23px}.v8-reviews .v8-outline-link{margin-top:18px}
+ .v8-geography-surface{grid-template-columns:1fr;gap:28px;padding:25px 20px}
+ .v8-geography h2{font-size:28px}.v8-geography-surface>div>p{font-size:13px}
+ .v8-region-labels{margin-top:18px}.v8-address-request input{font-size:16px}
+ .v8-article-grid{grid-template-columns:1fr;gap:26px}
+ .v8-article{padding-top:18px}.v8-article h3{font-size:21px;margin-bottom:10px}
+ .v8-article>p:not(.article-topic){margin-bottom:10px}.v8-article .article-topic{margin-bottom:10px}
+}

@@ -1,0 +1,29 @@
+{
+  "status": "homepage-prototype-only",
+  "active_coverage": [
+    "Москва",
+    "Московская область"
+  ],
+  "regional_pages_published": false,
+  "preferred_initial_url_mode": "subdirectory",
+  "supported_future_design_modes": [
+    "subdirectory",
+    "subdomain"
+  ],
+  "city_fields": [
+    "name",
+    "slug",
+    "services",
+    "dispatch_terms",
+    "contacts",
+    "local_content",
+    "preferred_url",
+    "published"
+  ],
+  "rules": [
+    "Choose one public primary URL per city before launch",
+    "Do not publish duplicate folder and subdomain pages",
+    "Keep existing service and article URLs or migrate with redirects",
+    "DNS, TLS and CMS routing are future implementation work"
+  ]
+}

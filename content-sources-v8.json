@@ -1,0 +1,29 @@
+{
+  "reviews": {
+    "url": "https://yandex.com/maps/org/oblsan/231444083812/reviews/",
+    "identity_verified_by": [
+      "company name",
+      "phone +79259449757",
+      "website oblsan.ru",
+      "address Летниковская, 2"
+    ],
+    "rating_shown": false
+  },
+  "articles": [
+    {
+      "title": "Что делать после процедуры уничтожения клопов в квартире",
+      "url": "https://oblsan.ru/chto-delat-posle-procedury-unichtozheniya-klopov-v-kvartire/",
+      "summary": "Какие рекомендации и сроки уточнить у специалиста после обработки."
+    },
+    {
+      "title": "Как вывести блох в подвале",
+      "url": "https://oblsan.ru/kak-vyvesti-blox-v-podvale/",
+      "summary": "Откуда берётся проблема и какие вопросы обсудить перед обработкой подвала."
+    },
+    {
+      "title": "Как избавиться от сорняков на участке",
+      "url": "https://oblsan.ru/kak-izbavitsya-ot-sornyakov-na-uchastke/",
+      "summary": "Обзор подходов к уходу за участком и борьбе с нежелательной растительностью."
+    }
+  ]
+}
